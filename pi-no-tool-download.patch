@@ -1,0 +1,48 @@
+--- a/packages/coding-agent/src/utils/tools-manager.ts
++++ b/packages/coding-agent/src/utils/tools-manager.ts
+@@ -342,7 +342,7 @@
+ }
+ 
+ /**
+- * Ensure a tool is available, downloading if necessary.
++ * Ensure a tool is available.
+  * Reports progress through `onStatus`; status messages are otherwise silent.
+  * Returns the tool path, or undefined if unavailable.
+  */
+@@ -371,30 +371,10 @@
+ 		return undefined;
+ 	}
+ 
+-	// Tool not found - download it
+-	onStatus?.({ type: "info", message: `${config.name} not found. Downloading...` });
+-
+-	try {
+-		const path = await downloadTool(tool);
+-		onStatus?.({ type: "info", message: `${config.name} installed to ${path}` });
+-		return path;
+-	} catch (e) {
+-		// Include the error cause chain: fetch failures surface as a bare
+-		// "fetch failed" TypeError with the actionable detail (DNS, TLS,
+-		// timeout) hidden in the cause. Depth-capped to guard against
+-		// circular cause chains.
+-		const messages: string[] = [];
+-		for (
+-			let current: unknown = e, depth = 0;
+-			current instanceof Error && depth < 5;
+-			current = current.cause, depth++
+-		) {
+-			if (!messages.includes(current.message)) messages.push(current.message);
+-		}
+-		onStatus?.({
+-			type: "warning",
+-			message: `Failed to download ${config.name}: ${messages.length > 0 ? messages.join(": ") : String(e)}`,
+-		});
+-		return undefined;
+-	}
++	// Do not fetch GitHub release binaries. rg and fd come from the distro.
++	onStatus?.({
++		type: "warning",
++		message: `${config.name} not found. Install the distro package; prebuilt binaries are not downloaded.`,
++	});
++	return undefined;
+ }
