@@ -1,15 +1,6 @@
 --- a/packages/coding-agent/src/utils/tools-manager.ts
 +++ b/packages/coding-agent/src/utils/tools-manager.ts
-@@ -342,7 +342,7 @@
- }
- 
- /**
-- * Ensure a tool is available, downloading if necessary.
-+ * Ensure a tool is available.
-  * Reports progress through `onStatus`; status messages are otherwise silent.
-  * Returns the tool path, or undefined if unavailable.
-  */
-@@ -371,30 +371,10 @@
+@@ -371,30 +371,10 @@ export async function ensureTool(
  		return undefined;
  	}
  
