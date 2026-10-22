@@ -19,7 +19,7 @@
 %endif
 
 Name:		pi
-Version:	1.3.0
+Version:	1.4.0
 Release:	1
 Summary:	Minimal, extensible agent harness
 Group:		Development/Other
@@ -138,6 +138,7 @@ chmod 0755 "$agent/dist/bundle/cli.js"
 cp -a node_modules/jiti "$mods/jiti"
 cp -a node_modules/get-east-asian-width "$mods/get-east-asian-width"
 cp -a node_modules/marked "$mods/marked"
+cp -a node_modules/marked-cjk-friendly "$mods/marked-cjk-friendly"
 cp -a node_modules/esbuild "$mods/esbuild"
 
 install -m0644 packages/chord/package.json "$mods/@earendil-works/chord/package.json"
@@ -160,7 +161,8 @@ EOF
 install -m0755 esbuild-bin "$mods/@esbuild/linux-%{esbuild_cpu}/bin/esbuild"
 
 find "$agent" "$mods/jiti" "$mods/esbuild" "$mods/marked" \
-	"$mods/get-east-asian-width" "$mods/@earendil-works/chord" \
+	"$mods/marked-cjk-friendly" "$mods/get-east-asian-width" \
+	"$mods/@earendil-works/chord" \
 	-type f \( -name '*.wasm' -o -name '*.node' -o -name '*.so' -o -name '*.exe' \) -delete
 
 ln -s %{_libdir}/pi/node_modules/@earendil-works/pi-coding-agent/dist/bundle/cli.js \

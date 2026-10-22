@@ -1,6 +1,6 @@
 --- a/packages/coding-agent/src/utils/tools-manager.ts
 +++ b/packages/coding-agent/src/utils/tools-manager.ts
-@@ -371,30 +371,10 @@ export async function ensureTool(
+@@ -372,30 +372,10 @@
  		return undefined;
  	}
  
