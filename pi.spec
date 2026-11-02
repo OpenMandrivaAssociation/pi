@@ -19,7 +19,7 @@
 %endif
 
 Name:		pi
-Version:	1.4.0
+Version:	1.5.0
 Release:	1
 Summary:	Minimal, extensible agent harness
 Group:		Development/Other
@@ -120,6 +120,8 @@ agent="$lib/node_modules/@earendil-works/pi-coding-agent"
 mods="$lib/node_modules"
 mkdir -p "$agent/dist/modes/interactive" "$agent/dist/core" \
 	"$mods/@earendil-works/chord" \
+	"$mods/@earendil-works/pi-schema" \
+	"$mods/@earendil-works/pi-telemetry" \
 	"$mods/@earendil-works/pi-tui/native/linux" \
 	"$mods/@esbuild/linux-%{esbuild_cpu}/bin" \
 	"%{buildroot}%{_bindir}"
@@ -145,6 +147,14 @@ install -m0644 packages/chord/package.json "$mods/@earendil-works/chord/package.
 install -m0644 packages/chord/README.md "$mods/@earendil-works/chord/README.md"
 cp -a packages/chord/dist "$mods/@earendil-works/chord/dist"
 
+# chord 1.5 imports these workspace packages from its installed dist.
+install -m0644 packages/schema/package.json "$mods/@earendil-works/pi-schema/package.json"
+install -m0644 packages/schema/README.md "$mods/@earendil-works/pi-schema/README.md"
+cp -a packages/schema/dist "$mods/@earendil-works/pi-schema/dist"
+install -m0644 packages/telemetry/package.json "$mods/@earendil-works/pi-telemetry/package.json"
+install -m0644 packages/telemetry/README.md "$mods/@earendil-works/pi-telemetry/README.md"
+cp -a packages/telemetry/dist "$mods/@earendil-works/pi-telemetry/dist"
+
 install -m0644 packages/tui/package.json "$mods/@earendil-works/pi-tui/package.json"
 cp -a packages/tui/dist "$mods/@earendil-works/pi-tui/dist"
 cp -a packages/tui/native/linux/prebuilds "$mods/@earendil-works/pi-tui/native/linux/"
@@ -163,6 +173,8 @@ install -m0755 esbuild-bin "$mods/@esbuild/linux-%{esbuild_cpu}/bin/esbuild"
 find "$agent" "$mods/jiti" "$mods/esbuild" "$mods/marked" \
 	"$mods/marked-cjk-friendly" "$mods/get-east-asian-width" \
 	"$mods/@earendil-works/chord" \
+	"$mods/@earendil-works/pi-schema" \
+	"$mods/@earendil-works/pi-telemetry" \
 	-type f \( -name '*.wasm' -o -name '*.node' -o -name '*.so' -o -name '*.exe' \) -delete
 
 ln -s %{_libdir}/pi/node_modules/@earendil-works/pi-coding-agent/dist/bundle/cli.js \
