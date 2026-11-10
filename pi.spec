@@ -19,7 +19,7 @@
 %endif
 
 Name:		pi
-Version:	1.5.0
+Version:	1.5.2
 Release:	1
 Summary:	Minimal, extensible agent harness
 Group:		Development/Other
