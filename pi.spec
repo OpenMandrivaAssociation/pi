@@ -19,7 +19,7 @@
 %endif
 
 Name:		pi
-Version:	1.5.2
+Version:	1.6.0
 Release:	1
 Summary:	Minimal, extensible agent harness
 Group:		Development/Other
@@ -147,7 +147,7 @@ install -m0644 packages/chord/package.json "$mods/@earendil-works/chord/package.
 install -m0644 packages/chord/README.md "$mods/@earendil-works/chord/README.md"
 cp -a packages/chord/dist "$mods/@earendil-works/chord/dist"
 
-# chord 1.5 imports these workspace packages from its installed dist.
+# chord 1.6 imports these workspace packages from its installed dist.
 install -m0644 packages/schema/package.json "$mods/@earendil-works/pi-schema/package.json"
 install -m0644 packages/schema/README.md "$mods/@earendil-works/pi-schema/README.md"
 cp -a packages/schema/dist "$mods/@earendil-works/pi-schema/dist"

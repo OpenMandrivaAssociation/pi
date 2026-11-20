@@ -1,5 +1,5 @@
 sources:
   esbuild-0.28.2-with-vendor.tar.xz: 29e6ead42169fd15ee3a7300ab71e942e25b4c2b
-  v1.5.2.tar.gz: e3a3c4eb83cbbcb9ea6e2e8ade6d6de2727ae588
-  pi-1.5.2-node_modules.tar.xz: 82dd53e7f438bef03d8c6f68dd4dbc0f4c57d83c
-  pi-1.5.2-model-data.tar.xz: fe074be396f3012c56e85307a9ade9670ce921f6
+  v1.6.0.tar.gz: 3a4311898036ccf3b661b46f0c6adcbb352188b9
+  pi-1.6.0-node_modules.tar.xz: 5ec2518ababfd2a7e5536ca4262ccbaf8b12061d
+  pi-1.6.0-model-data.tar.xz: 610ceec1bba7c54f04544a7b27bcffd0fd697244
